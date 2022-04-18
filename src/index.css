@@ -7,7 +7,37 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.container {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+}
+
+.column {
+  width: 250px;
+  padding: 10px;
+  border: 1px solid #000;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.column:not(:last-child) {
+  margin-right: 20px;
+}
+
+.column__title {
+  background-color: #eaeaea;
+  color: #000;
+  padding: 10px;
+  text-align: center;
+}
+
+.card {
+  padding: 10px;
+  background-color: purple;
+  color: white;
+  margin-top: 20px;
+  border-radius: 10px;
+  text-align: center;
 }
