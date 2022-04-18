@@ -10,9 +10,9 @@ const Board = () => {
 
   return (
     <div className="container">
-      {columns.map((column) => {
+      {columns.map((column, idx) => {
         return (
-          <Column key={column.id} id={column.id} title={column.title}>
+          <Column key={column.id} id={column.id} title={column.title} idx={idx}>
             {removeJunk(
               column.cardIds.map((cardId) =>
                 cards.find((card) => card.id === cardId)

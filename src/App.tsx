@@ -28,6 +28,7 @@ export interface ICardContext {
   columns: IColumn[];
   addCard: (columnId: number, _title: string) => void;
   addColumn: (_title: string) => void;
+  moveCard: (cardId: number, destColumnId: number, index: number) => void;
 }
 
 export const CardContext = React.createContext<ICardContext>({
@@ -35,6 +36,7 @@ export const CardContext = React.createContext<ICardContext>({
   columns: [],
   addCard: () => {},
   addColumn: () => {},
+  moveCard: () => {},
 });
 
 function App() {
@@ -93,7 +95,9 @@ function App() {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <CardContext.Provider value={{ cards, columns, addCard, addColumn }}>
+      <CardContext.Provider
+        value={{ cards, columns, addCard, addColumn, moveCard }}
+      >
         <Board />
       </CardContext.Provider>
     </DndProvider>

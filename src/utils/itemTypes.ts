@@ -1,1 +1,7 @@
-export const CARD = 'CARD';
+const CARD = 'CARD';
+
+const ItemTypes = {
+  CARD,
+};
+
+export default ItemTypes;
