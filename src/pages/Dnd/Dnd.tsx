@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import _ from 'lodash';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
-import Board from '../../components/Board';
+import Board from './components/Board';
 import { IColumn, ICard } from '../../utils/types';
 
 const defaultCategories = ['TODO', 'Shopping', 'Workout'];

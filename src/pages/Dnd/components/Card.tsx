@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { useDrag } from 'react-dnd';
-import { ICard } from '../utils/types';
-import ItemTypes from '../utils/ItemTypes';
+import { ICard } from '../../../utils/types';
+import ItemTypes from '../../../utils/ItemTypes';
 
 interface CardProps {
   card: ICard;

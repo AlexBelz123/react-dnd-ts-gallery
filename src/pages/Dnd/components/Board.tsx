@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 import Card from './Card';
 import Column from './Column';
 import TextField from './TextField';
-import { removeJunk } from '../utils/helpers';
-import { CardContext } from '../App';
+import { removeJunk } from '../../../utils/helpers';
+import { CardContext } from '../Dnd';
 
 const Board = () => {
   const { columns, cards, addColumn } = useContext(CardContext);

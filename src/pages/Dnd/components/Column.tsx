@@ -1,8 +1,8 @@
 import React, { FC, useContext } from 'react';
 import { useDrop } from 'react-dnd';
-import { CardContext } from '../App';
+import { CardContext } from '../Dnd';
 import TextField from './TextField';
-import ItemTypes from '../utils/ItemTypes';
+import ItemTypes from '../../../utils/ItemTypes';
 
 interface ColumnProps {
   title: string;
