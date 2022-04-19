@@ -1,0 +1,17 @@
+.header {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #eaeaea;
+
+  &__item {
+    text-decoration: none;
+    padding: 5px 10px;
+    background-color: pink;
+    margin-right: 20px;
+    border-radius: 3px;
+    color: #fff;
+  }
+}

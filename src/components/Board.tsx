@@ -18,15 +18,7 @@ const Board = () => {
                 cards.find((card) => card.id === cardId)
               )
             ).map((card, index) => (
-              <Card
-                key={card.id}
-                card={card}
-                //   id={card.id}
-                //   columnId={column.id}
-                //   columnIndex={index}
-                //   title={card.title}
-                //   moveCard={moveCard}
-              />
+              <Card key={card.id} card={card} />
             ))}
           </Column>
         );
