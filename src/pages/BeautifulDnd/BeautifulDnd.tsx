@@ -1,6 +1,11 @@
 // in react 18 strict mode cannot use v 13 of beautiful dnd! 19/4/22 13:47
 import React, { useState } from 'react';
-import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
+import {
+  DragDropContext,
+  Draggable,
+  Droppable,
+  DropResult,
+} from 'react-beautiful-dnd';
 import { v4 as uuidv4 } from 'uuid';
 
 const itemsFromBackend = [
@@ -30,9 +35,10 @@ const columnsFromBackend = {
   },
 };
 
-const onDragEnd = (result: any, columns: any, setColumns: any) => {
+const onDragEnd = (result: DropResult, columns: any, setColumns: any) => {
   if (!result.destination) return;
   const { source, destination } = result;
+  console.log(result);
 
   if (source.droppableId !== destination.droppableId) {
     const sourceColumn = columns[source.droppableId];

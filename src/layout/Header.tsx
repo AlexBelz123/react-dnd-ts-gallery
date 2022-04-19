@@ -10,6 +10,9 @@ const Header = () => {
       <Link to="/beautiful-dnd" className="header__item">
         react-beautiful-dnd
       </Link>
+      <Link to="/hybrid" className="header__item">
+        hybrid
+      </Link>
     </div>
   );
 };

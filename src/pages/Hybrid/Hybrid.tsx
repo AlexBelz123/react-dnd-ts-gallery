@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import { DropResult } from 'react-beautiful-dnd';
+
 import _ from 'lodash';
-import { DndProvider } from 'react-dnd';
-import { HTML5Backend } from 'react-dnd-html5-backend';
 import Board from './components/Board';
 import { IColumn, ICard } from '../../utils/types';
+import { removeJunk } from '../../utils/helpers';
 
 const defaultCategories = ['TODO', 'Shopping', 'Workout'];
 
@@ -28,7 +29,7 @@ export interface ICardContext {
   columns: IColumn[];
   addCard: (columnId: string, _title: string) => void;
   addColumn: (_title: string) => void;
-  moveCard: (cardId: string, destColumnId: string, index: number) => void;
+  moveCard: (result: DropResult) => void;
 }
 
 export const CardContext = React.createContext<ICardContext>({
@@ -75,32 +76,56 @@ function Dnd() {
     setColumns((prevColumns) => [...prevColumns, newColumn]);
   };
 
-  const moveCard = (cardId: string, destColumnId: string, index: number) => {
-    // take a look at it
+  const moveCard = (result: DropResult) => {
+    if (!result.destination) return;
+    const { source, destination, draggableId } = result;
+    const { index } = destination;
+
     setColumns((prevColumns) => [
       ...prevColumns.map((column) => ({
         ...column,
         cardIds: _.flowRight(
           // 2) If this is the destination column, insert the cardId.
           (ids: string[]) =>
-            column.id === destColumnId
-              ? [...ids.slice(0, index), cardId, ...ids.slice(index)]
+            column.id === destination.droppableId
+              ? [...ids.slice(0, index), draggableId, ...ids.slice(index)]
               : ids,
           // 1) Remove the cardId for all columns
-          (ids: string[]) => ids.filter((id) => id !== cardId)
+          (ids: string[]) => ids.filter((id) => id !== draggableId)
         )(column.cardIds),
       })),
     ]);
+
+    // const newColumns = columns.map((column) => {
+    //   if (column.id === source.droppableId) {
+    //     return {
+    //       ...column,
+    //       cardIds: column.cardIds.filter((id) => id !== draggableId),
+    //     };
+    //   }
+
+    //   if (column.id === destination.droppableId) {
+    //     return {
+    //       ...column,
+    //       cardIds: [
+    //         ...column.cardIds.slice(0, index),
+    //         draggableId,
+    //         ...column.cardIds.slice(index),
+    //       ],
+    //     };
+    //   }
+    //   return column;
+    // });
+
+    // setColumns(newColumns);
   };
 
   return (
-    <DndProvider backend={HTML5Backend}>
-      <CardContext.Provider
-        value={{ cards, columns, addCard, addColumn, moveCard }}
-      >
-        <Board />
-      </CardContext.Provider>
-    </DndProvider>
+    <CardContext.Provider
+      value={{ cards, columns, addCard, addColumn, moveCard }}
+    >
+      <Board />
+    </CardContext.Provider>
   );
 }
 

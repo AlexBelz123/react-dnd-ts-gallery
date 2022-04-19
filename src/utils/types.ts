@@ -1,10 +1,10 @@
 export interface ICard {
   title: string;
-  id: number;
+  id: string;
 }
 
 export interface IColumn {
   title: string;
-  id: number;
-  cardIds: number[];
+  id: string;
+  cardIds: string[];
 }

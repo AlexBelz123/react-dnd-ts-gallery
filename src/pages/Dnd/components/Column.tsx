@@ -6,13 +6,13 @@ import ItemTypes from '../../../utils/ItemTypes';
 
 interface ColumnProps {
   title: string;
-  id: number;
+  id: string;
   idx: number;
   children: React.ReactNode;
 }
 
 interface IDragCard {
-  id: number;
+  id: string;
 }
 
 const Column: FC<ColumnProps> = ({ title, id, idx, children }) => {
